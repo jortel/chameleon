@@ -1,0 +1,5 @@
+--
+--
+--
+
+DELETE FROM DUAL WHERE x = 1;
