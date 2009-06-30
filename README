@@ -1,0 +1,4 @@
+Chameleon is a DDL transformation tool used to translate
+a common database schema to database specific schema(s).
+
+Project: www.fedorahosted.org/chameleon.
