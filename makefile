@@ -21,8 +21,8 @@ rpm : dist
 	rpmlint -i dist/$(PKG)*.rpm
 
 release : rpm
-	scp dist/$(PKG)*.tar.gz $(FEDORAPEOPLE):
-	scp dist/$(PKG)*.rpm $(FEDORAPEOPLE):
+	scp dist/$(PKG)*.tar.gz fedorahosted.org:chameleon
+	scp dist/$(PKG)*.rpm fedorahosted.org:chameleon
 
 clean : 
 	rm -rf dist

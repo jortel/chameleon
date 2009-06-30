@@ -2,7 +2,7 @@ Summary: Common schema transformation tool
 Name: chameleon
 Version: 0.1
 Release: 6%{?dist}
-Source0: %{name}/%{name}-%{version}.tar.gz
+Source0: https://fedorahosted.org/releases/c/h/%{name}/%{name}-%{version}.tar.gz
 License: LGPLv3+
 Group: Development/Libraries
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
