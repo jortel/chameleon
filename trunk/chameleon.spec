@@ -1,19 +1,20 @@
 Summary: Common schema transformation tool
 Name: chameleon
 Version: 0.1
-Release: 6%{?dist}
+Release: 7%{?dist}
 Source0: https://fedorahosted.org/releases/c/h/%{name}/%{name}-%{version}.tar.gz
 License: LGPLv3+
 Group: Development/Libraries
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildArch: noarch
+BuildRequires: python >= 2.3
 Requires: python >= 2.3 python-ply
 Url: https://fedorahosted.org/chameleon
 
 %description
 Chameleon is a common to database specific schema transformation tool.
 
-%define chameleon_home /usr/share/chameleon
+%define chameleon_home %{_datadir}/chameleon
 
 %prep
 %setup -q
@@ -24,7 +25,7 @@ Chameleon is a common to database specific schema transformation tool.
 rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT/%{_bindir}
 mkdir -p $RPM_BUILD_ROOT/%{chameleon_home}
-cp chameleon/*.py $RPM_BUILD_ROOT/%{chameleon_home}
+cp -p chameleon/*.py $RPM_BUILD_ROOT/%{chameleon_home}
 install -m 0755 chameleon.bin $RPM_BUILD_ROOT/%{_bindir}/chameleon
 
 %clean
@@ -39,6 +40,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc LICENSE
 
 %changelog
+* Mon Jul 13 2009 jortel <jortel@redhat.com> - 0.1-7
+- Replace hard coded "/usr/share" with %%{_datadir} and use cp -p to preserve permissions.
+- Add BuildRequires python.
 * Wed May 20 2009 jortel <jortel@redhat.com> - 0.1-6
 - Rename to meet packaging guidelines.
 * Tue May 5 2009 jortel <jortel@redhat.com> - 0.1-5
