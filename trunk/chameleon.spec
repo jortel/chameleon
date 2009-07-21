@@ -1,7 +1,7 @@
 Summary: Common schema transformation tool
 Name: chameleon
-Version: 0.1
-Release: 7%{?dist}
+Version: 0.2
+Release: 1%{?dist}
 Source0: https://fedorahosted.org/releases/c/h/%{name}/%{name}-%{version}.tar.gz
 License: LGPLv3+
 Group: Development/Libraries
@@ -40,6 +40,8 @@ rm -rf $RPM_BUILD_ROOT
 %doc LICENSE
 
 %changelog
+* Tue Jul 21 2009 jortel <jortel@redhat.com> - 0.2-1
+- Fix number precision.
 * Mon Jul 13 2009 jortel <jortel@redhat.com> - 0.1-7
 - Replace hard coded "/usr/share" with %%{_datadir} and use cp -p to preserve permissions.
 - Add BuildRequires python.

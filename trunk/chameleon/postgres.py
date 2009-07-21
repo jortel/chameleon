@@ -58,14 +58,22 @@ class Type(Plugin):
         if tn == 'BLOB':
             return model.Type('BYTEA')
         if tn == 'NUMBER':
-            if t.precision is None:
-                return model.Type('NUMERIC')
+            t = self.pgint(t)
+        return t
+    
+    def pgint(self, t):
+        if t.precision is None:
+            return model.Type('NUMERIC')
+        if t.precision.isdigit():
             if t.precision > 10 and t.precision < 20:
                 return model.Type('BIGINT')
             if t.precision > 5 and t.precision < 10:
                 return model.Type('INTEGER')
             return model.Type('SMALLINT')
-        return t
+        else:
+            f = model.Type('FLOAT')
+            f.precision = t.precision.split(',')[1].strip()
+            return f
 
     def render(self, type, n=0):
         t = self.xlated(type)

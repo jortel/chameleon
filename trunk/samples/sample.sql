@@ -7,7 +7,7 @@ jeff
        using index tablespace users
      check (id > 0),
   name varchar(20) not null unique,
-  age number default (1),
+  age number(1) default (1),
   info blob not null
 );
 
